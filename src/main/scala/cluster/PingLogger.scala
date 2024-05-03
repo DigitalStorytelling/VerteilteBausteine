@@ -2,9 +2,11 @@ package cluster
 
 
 import akka.actor.typed.Behavior
-import akka.actor.typed.receptionist.Receptionist.Register
 import akka.actor.typed.receptionist.{Receptionist, ServiceKey}
 import akka.actor.typed.scaladsl.Behaviors
+import com.fasterxml.jackson.core.JsonGenerator
+import com.fasterxml.jackson.databind.jsontype.TypeSerializer
+import com.fasterxml.jackson.databind.{JsonSerializable, SerializerProvider}
 
 
 object PingLogger {
@@ -15,8 +17,7 @@ object PingLogger {
 
     context.system.receptionist ! Receptionist.Register(PingLogger.PingLoggerKey, context.self)
 
-
-    Behaviors.receiveMessage{
+    Behaviors.receiveMessage {
       case ping: Ping =>
         context.log.info("I was pinged...")
         Behaviors.same
@@ -24,6 +25,6 @@ object PingLogger {
   }
 
   trait CommandLogger
-  case class Ping() extends CommandLogger
-  case class ListingResponse(listing: Receptionist.Listing) extends CommandLogger
+
+  case class Ping() extends CommandLogger //with JsonSerializable
 }
