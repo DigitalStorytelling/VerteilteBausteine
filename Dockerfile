@@ -7,4 +7,4 @@ RUN unzip sbt-$SBT_VERSION.zip -d ops
 WORKDIR /Praktikum02
 ADD . /Praktikum02
 
-CMD /ops/sbt/bin/sbt run "runMain cluster.Main"
+CMD /ops/sbt/bin/sbt run
