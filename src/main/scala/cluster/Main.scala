@@ -12,26 +12,17 @@ object Main {
     /*val port = args(0).toInt
     val role = args(1)*/
 
-    val userInput = System.getenv("envVar")
-    val userInputArray = userInput.split(",")
+    val port = System.getenv("port").toInt
+    val role: String = System.getenv("role")
 
-    val port = userInputArray(0).toInt
-    val role: String = userInputArray(1)
-    //val nameDockerContainer = userInputArray(2)
-
-    if(role == "logger")
-
-    println("Name Docker " + nameDockerContainer)
-
-    val configuration = createConfiguration(port, nameDockerContainer)
-
+    // get hostname (docker)
+    val configuration = createConfiguration(port, java.net.InetAddress.getLocalHost.getHostName)
 
     ActorSystem[Nothing](Guardian(role), "ping", configuration)
 
-
-    //while (true) {}
-    //println("Press any key to exit")
-    //StdIn.readLine()
+    println("PRESS ANY KEY TO END")
+    StdIn.readLine()
+    println("SHUTTING DOWN")
 
   }
 

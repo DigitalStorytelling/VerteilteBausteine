@@ -9,8 +9,6 @@ object PingSender {
     context.log.info("Sender started")
 
     actorLogger ! PingLogger.Ping()
-
-    Behaviors.same
+    Behaviors.empty
   }
-
 }

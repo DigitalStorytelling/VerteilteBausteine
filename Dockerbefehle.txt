@@ -1,7 +1,6 @@
 docker build -t cluster:v1 .
-
 docker network create akka
 
-docker run -e "envVar=25251,-server,logger" -p 25251:25251 --shm-size=512m --network=akka --name=logger cluster:v1
+docker run -i -t -e "port=25252" -e "role=-server" -p 25252:25252 -h=server --shm-size=512m --network=akka cluster:v1
+docker run -i -t -e "port=25251" -e "role=-client" -p 25251:25251 -h=client --shm-size=512m --network=akka cluster:v1
 
-docker run -e "envVar=25252,-client,sender" -p 25252:25252 --shm-size=512m --network=akka --name=sender cluster:v1

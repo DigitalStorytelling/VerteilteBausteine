@@ -1,10 +1,7 @@
 package cluster
-
-
 import akka.actor.typed.Behavior
 import akka.actor.typed.receptionist.{Receptionist, ServiceKey}
 import akka.actor.typed.scaladsl.Behaviors
-
 
 object PingLogger {
 
@@ -22,5 +19,5 @@ object PingLogger {
   }
 
   trait CommandLogger
-  case class Ping() extends CommandLogger //with JsonSerializable
+  case class Ping() extends CommandLogger
 }

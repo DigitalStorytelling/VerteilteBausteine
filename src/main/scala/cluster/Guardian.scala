@@ -1,8 +1,8 @@
 package cluster
 
-import akka.actor.typed.{Behavior}
-import akka.actor.typed.receptionist.{Receptionist }
-import akka.actor.typed.scaladsl.{Behaviors}
+import akka.actor.typed.Behavior
+import akka.actor.typed.receptionist.Receptionist
+import akka.actor.typed.scaladsl.Behaviors
 
 object Guardian {
 
@@ -26,7 +26,7 @@ object Guardian {
 
       Behaviors.receiveMessagePartial {
         case PingLogger.PingLoggerKey.Listing(listings) if listings.nonEmpty =>
-          context.log.info("At least one PingLogger is available")
+          context.log.info("At least one PingLogger available")
           listings.foreach { ps => context.spawnAnonymous(PingSender(ps)) }
           Behaviors.same
 
