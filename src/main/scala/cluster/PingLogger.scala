@@ -4,9 +4,6 @@ package cluster
 import akka.actor.typed.Behavior
 import akka.actor.typed.receptionist.{Receptionist, ServiceKey}
 import akka.actor.typed.scaladsl.Behaviors
-import com.fasterxml.jackson.core.JsonGenerator
-import com.fasterxml.jackson.databind.jsontype.TypeSerializer
-import com.fasterxml.jackson.databind.{JsonSerializable, SerializerProvider}
 
 
 object PingLogger {
@@ -25,6 +22,5 @@ object PingLogger {
   }
 
   trait CommandLogger
-
   case class Ping() extends CommandLogger //with JsonSerializable
 }
