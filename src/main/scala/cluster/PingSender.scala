@@ -10,7 +10,7 @@ object PingSender {
 
     actorLogger ! PingLogger.Ping()
 
-    Behaviors.empty
+    Behaviors.same
   }
 
 }

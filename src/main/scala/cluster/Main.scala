@@ -17,7 +17,11 @@ object Main {
 
     val port = userInputArray(0).toInt
     val role: String = userInputArray(1)
-    val nameDockerContainer = userInputArray(2)
+    //val nameDockerContainer = userInputArray(2)
+
+    if(role == "logger")
+
+    println("Name Docker " + nameDockerContainer)
 
     val configuration = createConfiguration(port, nameDockerContainer)
 
@@ -25,7 +29,7 @@ object Main {
     ActorSystem[Nothing](Guardian(role), "ping", configuration)
 
 
-    while (true) {}
+    //while (true) {}
     //println("Press any key to exit")
     //StdIn.readLine()
 
