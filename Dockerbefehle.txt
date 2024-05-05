@@ -3,4 +3,3 @@ docker network create akka
 
 docker run -i -t -e "port=25252" -e "role=-server" -p 25252:25252 -h=server --shm-size=512m --network=akka cluster:v1
 docker run -i -t -e "port=25251" -e "role=-client" -p 25251:25251 -h=client --shm-size=512m --network=akka cluster:v1
-
